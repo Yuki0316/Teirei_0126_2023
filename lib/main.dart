@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:list_tile_switch/list_tile_switch.dart';
+import 'package:teirei_126/parts.dart';
+
+import 'divider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,32 +41,46 @@ class _MyAppState extends State<MyApp> {
           ),
           elevation: 0.5,
         ),
-        body: Stack(
+        body: Column(
           children: <Widget>[
             Container(
-              width: 390,
-              height: 270,
-              margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-              child: ListTileSwitch(
-                value: _switchValues[0],
-                onChanged: (value) {
-                  setState(() {
-                    _switchValues[0] = value;
-                  });
-                },
-                switchActiveColor: const Color(0xff34C759),
-                title: const Text(
-                  'Prevent Cross-Site Tracking',
-                  style: TextStyle(fontSize: 15, color: Colors.black),
-                ),
-              ),
-            ),
+                width: 390,
+                height: 340,
+                margin:
+                    const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Column(
+                  children: const [
+                    Parts(
+                      article: ('Prevent Cross-Site Tracking'),
+                    ),
+                    Divide(),
+                    Parts(
+                      article: ('Hide IP Address'),
+                    ),
+                    Divide(),
+                    Parts(
+                      article: ('Block All Cookies'),
+                    ),
+                    Divide(),
+                    Parts(
+                      article: ('Fraudulent Website Warning'),
+                    ),
+                    Divide(),
+                    Parts(
+                      article: ('Privacy Preserving Ad Measurement'),
+                    ),
+                    Divide(),
+                    Parts(
+                      article: ('Check for Apple Pay'),
+                    ),
+                  ],
+                )),
           ],
         ),
       ),
     );
   }
 }
-//Providerを下につけたいのだが、too many positionalを吐かれてなかなかうまくいかない
